@@ -2,6 +2,8 @@ const theme = {
   colors: {
     dark: "#24292e",
     white: "#ffffff",
+    lightGrey: "#e1e4e8",
+    blue: "#0366d6",
   },
   fontSizes: {
     heading: 18,

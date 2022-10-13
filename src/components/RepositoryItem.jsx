@@ -1,15 +1,100 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
+import theme from "../theme";
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    padding: 15,
+    backgroundColor: theme.colors.white,
+  },
+  topContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 5,
+    marginRight: 20,
+  },
+  infoContainer: {
+    display: "flex",
+    width: 0,
+    flexGrow: 1,
+  },
+  name: {
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.heading,
+    marginBottom: 15,
+  },
+  description: {
+    marginBottom: 15,
+    flexWrap: "wrap",
+    flexShrink: 1,
+  },
+  languageTagContainer: {
+    borderRadius: 5,
+    backgroundColor: theme.colors.blue,
+    alignSelf: "flex-start",
+    padding: 5,
+    marginBottom: 20,
+  },
+  languageTagText: {
+    color: theme.colors.white,
+  },
+  bottomContainer: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  bottomContainerItem: {
+    flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  stat: {
+    fontWeight: theme.fontWeights.bold,
+    marginBottom: 5,
+  },
+});
+
+const getRoundedValue = (number) => {
+  return Math.round(number / 100) / 10.0 + "k";
+};
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View>
-      <Text>Full name: {item.fullName}</Text>
-      <Text>Description: {item.description}</Text>
-      <Text>Language: {item.language}</Text>
-      <Text>Stars: {item.stargazersCount}</Text>
-      <Text>Forks: {item.forksCount}</Text>
-      <Text>Reviews: {item.reviewCount}</Text>
-      <Text>Rating: {item.ratingAverage}</Text>
+    <View style={styles.container}>
+      <View style={styles.topContainer}>
+        <Image style={styles.image} source={{ uri: item.ownerAvatarUrl }} />
+        <View style={styles.infoContainer}>
+          <Text style={styles.name}>{item.fullName}</Text>
+          <Text style={styles.description}>{item.description}</Text>
+          <View style={styles.languageTagContainer}>
+            <Text style={styles.languageTagText}>{item.language}</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.bottomContainer}>
+        <View style={styles.bottomContainerItem}>
+          <Text style={styles.stat}>
+            {getRoundedValue(item.stargazersCount)}
+          </Text>
+          <Text>Stars</Text>
+        </View>
+        <View style={styles.bottomContainerItem}>
+          <Text style={styles.stat}>{getRoundedValue(item.forksCount)}</Text>
+          <Text>Forks</Text>
+        </View>
+        <View style={styles.bottomContainerItem}>
+          <Text style={styles.stat}>{item.reviewCount}</Text>
+          <Text>Reviews</Text>
+        </View>
+        <View style={styles.bottomContainerItem}>
+          <Text style={styles.stat}>{item.ratingAverage}</Text>
+          <Text>Rating</Text>
+        </View>
+      </View>
     </View>
   );
 };
