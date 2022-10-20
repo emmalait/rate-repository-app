@@ -14,6 +14,8 @@ const theme = {
     body: 14,
   },
   fonts: {
+    android: "Roboto",
+    ios: "Arial",
     main: "System",
   },
   fontWeights: {
