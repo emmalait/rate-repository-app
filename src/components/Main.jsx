@@ -9,6 +9,8 @@ import SignIn from "./SignIn";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.lightGrey,
+    display: "flex",
+    flex: 1,
   },
 });
 const Main = () => {

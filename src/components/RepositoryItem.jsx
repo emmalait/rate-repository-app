@@ -1,6 +1,7 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 import theme from "../theme";
+import Text from "./Text";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,8 +25,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   name: {
-    fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSizes.heading,
     marginBottom: 15,
   },
   description: {
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   stat: {
-    fontWeight: theme.fontWeights.bold,
     marginBottom: 5,
   },
 });
@@ -69,7 +67,9 @@ const RepositoryItem = ({ item }) => {
       <View style={styles.topContainer}>
         <Image style={styles.image} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{item.fullName}</Text>
+          <Text fontWeight="bold" fontSize="heading" style={styles.name}>
+            {item.fullName}
+          </Text>
           <Text style={styles.description}>{item.description}</Text>
           <View style={styles.languageTagContainer}>
             <Text style={styles.languageTagText}>{item.language}</Text>
@@ -78,21 +78,27 @@ const RepositoryItem = ({ item }) => {
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.bottomContainerItem}>
-          <Text style={styles.stat}>
+          <Text fontWeight="bold" style={styles.stat}>
             {getRoundedValue(item.stargazersCount)}
           </Text>
           <Text>Stars</Text>
         </View>
         <View style={styles.bottomContainerItem}>
-          <Text style={styles.stat}>{getRoundedValue(item.forksCount)}</Text>
+          <Text fontWeight="bold" style={styles.stat}>
+            {getRoundedValue(item.forksCount)}
+          </Text>
           <Text>Forks</Text>
         </View>
         <View style={styles.bottomContainerItem}>
-          <Text style={styles.stat}>{item.reviewCount}</Text>
+          <Text fontWeight="bold" style={styles.stat}>
+            {item.reviewCount}
+          </Text>
           <Text>Reviews</Text>
         </View>
         <View style={styles.bottomContainerItem}>
-          <Text style={styles.stat}>{item.ratingAverage}</Text>
+          <Text fontWeight="bold" style={styles.stat}>
+            {item.ratingAverage}
+          </Text>
           <Text>Rating</Text>
         </View>
       </View>
